@@ -5,12 +5,9 @@
     $obj = new Tasks;
     
     if(isset($_POST['submit'])) {
-        // Insert Data in the Table
         $task = $_POST['task'];
         $id = $_POST['id'];
         $created_at = $updated_at = date("Y-m-d H:i:s");
-
-        //Update
         if(!empty($id)) {
             $sql = "UPDATE todolists set task = '".$task."', updated_at = '".$updated_at."' where id = ".$id;
             $res = $obj->executeQuery($sql);
@@ -36,18 +33,13 @@
         session_write_close();
         header("LOCATION:index.php");
     }
-
-    //Get all Tasks
     $tasks = $obj->getAllTasks();
-
-    //Get Task
     $editing = false;
     if(isset($_GET['action']) && $_GET['action']  === 'edit') {
         $taskData = $obj->getTask($_GET['id']);
         $editing = true;
     }
 
-    //Delete Task
     if(isset($_GET['action']) && $_GET['action']  === 'delete') {
         $sql = "DELETE FROM todolists WHERE id = ".$_GET['id'];
         $res = $obj->executeQuery($sql);
@@ -174,9 +166,9 @@
     <script src="https://kit.fontawesome.com/5f80e78a4d.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <!--Step 1: Basic structure of Todo List-->
+    
     <div class="container">
-      <!--Step 2: Create input place and button-->
+      
       <div id="newtask">
         <?php include('include/alert.php') ?>
 
