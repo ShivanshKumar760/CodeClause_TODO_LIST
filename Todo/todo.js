@@ -30,8 +30,6 @@
 //     document.getElementById(id).remove();
 // }
 
-
-// Step 1 - Get the task from input field
 const form = document.getElementById("taskform");
 form.addEventListener("submit", e => {
   let value = document.getElementById("task").value;
@@ -41,7 +39,6 @@ form.addEventListener("submit", e => {
   }
 });
 
-// Hide alerts
 var close = document.getElementsByClassName("close");
 
 function hide() {
